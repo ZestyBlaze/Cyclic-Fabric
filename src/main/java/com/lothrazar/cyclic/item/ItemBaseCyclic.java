@@ -116,6 +116,16 @@ public class ItemBaseCyclic extends Item implements SimpleEnergyItem {
     }
 
     @Override
+    public int getBarWidth(ItemStack stack) {
+        if (hasEnergy) {
+            float current = getStoredEnergy(stack);
+            float max = getEnergyCapacity(stack);
+            return (max == 0) ? 0 : Math.round(13.0F * current / max);
+        }
+        return super.getBarWidth(stack);
+    }
+
+    @Override
     @Environment(EnvType.CLIENT)
     public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
         tooltip.add(Component.translatable(getDescriptionId() + ".tooltip").withStyle(ChatFormatting.GRAY));

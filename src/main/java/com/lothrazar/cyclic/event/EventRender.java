@@ -1,14 +1,9 @@
 package com.lothrazar.cyclic.event;
 
 import com.lothrazar.cyclic.flib.RenderEntityToBlockLaser;
-import com.lothrazar.cyclic.flib.SoundUtil;
 import com.lothrazar.cyclic.item.LaserItem;
-import com.lothrazar.cyclic.net.PacketEntityLaser;
-import com.lothrazar.cyclic.registry.SoundRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderEvents;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -17,9 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EventRender {
     public static void onRenderWorldLast() {
@@ -31,12 +23,12 @@ public class EventRender {
                     return;
                 }
                 Level world = player.level();
-                ItemStack stack = ItemStack.EMPTY;
-                List<BlockPos> putBoxHere = new ArrayList<>();
+                ItemStack stack;
                 /****************** end rendering cubes. start laser beam render ********************/
                 stack = LaserItem.getIfHeld(player);
                 if (!stack.isEmpty() && player.isUsingItem()) {
-                    if (stack.getItem() instanceof LaserItem laserItem && laserItem.getStoredEnergy(stack) < LaserItem.COST) {
+                    LaserItem laserItem = (LaserItem) stack.getItem();
+                    if (laserItem.getStoredEnergy(stack) < LaserItem.COST) {
                         return;
                     }
 
@@ -45,10 +37,6 @@ public class EventRender {
                     if (mc.crosshairPickEntity != null) {
                         //Render and Shoot
                         RenderEntityToBlockLaser.renderLaser(context.matrixStack(), player, mc.getFrameTime(), stack, InteractionHand.MAIN_HAND, 18, -0.02F); // TODO
-                        if (world.getGameTime() % 4 == 0) {
-                            PacketEntityLaser.send(mc.crosshairPickEntity, true);
-                            SoundUtil.playSound(player, SoundRegistry.LASERBEANPEW, 0.2F);
-                        }
                     } else {
                         //out of range- do custom raytrace
                         double laserGamemodeRange = mc.gameMode.getPickRange() * LaserItem.RANGE_FACTOR;
@@ -72,10 +60,6 @@ public class EventRender {
                                 } else {
                                     //Render and Shoot
                                     RenderEntityToBlockLaser.renderLaser(context.matrixStack(), player, mc.getFrameTime(), stack, InteractionHand.MAIN_HAND);
-                                    if (world.getGameTime() % 4 == 0) {
-                                        PacketEntityLaser.send(ehr.getEntity(), false);
-                                        SoundUtil.playSound(player, SoundRegistry.LASERBEANPEW, 0.2F);
-                                    }
                                 }
                             }
                         }
