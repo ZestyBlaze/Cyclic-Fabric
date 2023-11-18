@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.lothrazar.cyclic.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EntityMixin",
+    "InventoryMixin",
+    "LivingEntityMixin",
+    "PlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

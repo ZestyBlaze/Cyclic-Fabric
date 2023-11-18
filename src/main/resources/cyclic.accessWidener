@@ -1,0 +1,3 @@
+accessWidener v2 named
+accessible field net/minecraft/world/entity/LivingEntity effectsDirty Z
+accessible method net/minecraft/world/entity/LivingEntity updatingUsingItem ()V
