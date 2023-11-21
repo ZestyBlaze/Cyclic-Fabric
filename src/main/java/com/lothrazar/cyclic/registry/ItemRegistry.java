@@ -4,12 +4,12 @@ import com.google.common.collect.Sets;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.item.GemstoneItem;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
-import com.lothrazar.cyclic.item.LaserItem;
-import com.lothrazar.cyclic.item.TempChargerItem;
+import com.lothrazar.cyclic.item.animal.*;
 import com.lothrazar.cyclic.item.elemental.FireExtinguishItem;
 import com.lothrazar.cyclic.item.elemental.FireballItem;
 import com.lothrazar.cyclic.item.equipment.GlowingHelmetItem;
 import com.lothrazar.cyclic.item.food.*;
+import com.lothrazar.cyclic.item.redstone.LeverRemote;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -87,12 +87,25 @@ public class ItemRegistry {
 
     public static final Item GEM_AMBER = register("gem_amber", new GemstoneItem(new FabricItemSettings()));
 
-    public static final Item FIRE_KILLER = register("fire_killer", new FireExtinguishItem(new FabricItemSettings()));
-    public static final Item MILK_BOTTLE = register("milk_bottle", new MilkBottle(new FabricItemSettings()));
-    public static final Item FIREBALL_ORANGE = register("fireball", new FireballItem(new FabricItemSettings()));
-    public static final Item LASER_CANNON = register("laser_cannon", new LaserItem(new FabricItemSettings()));
+    public static final Item HEART = register("heart", new HeartItem(new FabricItemSettings().stacksTo(16)));
+    public static final Item HEART_EMPTY = register("heart_empty", new HeartToxicItem(new FabricItemSettings().stacksTo(16)));
 
-    public static final Item TEMP_CHARGER_ITEM = register("charger_item", new TempChargerItem(new FabricItemSettings()));
+    public static final Item STIRRUPS = register("stirrups", new StirrupsItem(new FabricItemSettings().maxDamage(256)));
+    public static final Item STIRRUPS_REVERSE = register("stirrups_reverse", new StirrupsReverseItem(new FabricItemSettings().maxDamage(256)));
+    public static final Item LEVER_REMOTE = register("lever_remote", new LeverRemote(new FabricItemSettings().stacksTo(1)));
+
+    public static final Item DIAMOND_CARROT_HEALTH = register("diamond_carrot_health", new ItemHorseHealthDiamondCarrot(new FabricItemSettings()));
+    public static final Item REDSTONE_CARROT_SPEED = register("redstone_carrot_speed", new ItemHorseRedstoneSpeed(new FabricItemSettings()));
+    public static final Item EMERALD_CARROT_JUMP = register("emerald_carrot_jump", new ItemHorseEmeraldJump(new FabricItemSettings()));
+    public static final Item LAPIS_CARROT_VARIANT = register("lapis_carrot_variant", new ItemHorseLapisVariant(new FabricItemSettings()));
+    public static final Item TOXIC_CARROT = register("toxic_carrot", new ItemHorseToxic(new FabricItemSettings()));
+
+    public static final Item FIRE_KILLER = register("fire_killer", new FireExtinguishItem(new FabricItemSettings()));
+    public static final Item MILK_BOTTLE = register("milk_bottle", new MilkBottle(new FabricItemSettings().food(new FoodProperties.Builder().alwaysEat().build())));
+    public static final Item FIREBALL_ORANGE = register("fireball", new FireballItem(new FabricItemSettings()));
+    //public static final Item LASER_CANNON = register("laser_cannon", new LaserItem(new FabricItemSettings()));
+
+    //public static final Item TEMP_CHARGER_ITEM = register("charger_item", new TempChargerItem(new FabricItemSettings()));
 
     private static Item register(String name, Item item) {
         Item returnItem = Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(ModCyclic.MODID, name), item);

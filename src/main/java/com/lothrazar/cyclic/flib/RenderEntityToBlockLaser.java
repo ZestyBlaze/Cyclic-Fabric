@@ -20,35 +20,28 @@ import org.joml.Vector4f;
 
 /**
  * Citation/source/author
- *
- *
- * https://github.com/Direwolf20-MC/MiningGadgets
- *
+ * <a href="https://github.com/Direwolf20-MC/MiningGadgets">...</a>
  */
 public class RenderEntityToBlockLaser {
-
     private static float calculateLaserFlickerModifier(long gameTime) {
         return 0.9f + 0.1f * Mth.sin(gameTime * 0.99f) * Mth.sin(gameTime * 0.3f) * Mth.sin(gameTime * 0.1f);
     }
 
-    public static void renderLaser(PoseStack pose, Player player, float ticks, ItemStack stack, InteractionHand hand) {
-        renderLaser(pose, player, ticks, stack, hand, 18, -0.02F); // default range, default speed
+    public static void renderLaser(PoseStack pose, Player player, float ticks, InteractionHand hand) {
+        renderLaser(pose, player, ticks, hand, 18, -0.02F); // default range, default speed
     }
 
-    public static void renderLaser(PoseStack pose, Player player, float ticks, ItemStack stack, InteractionHand hand, final int range, float speedModifier) {
+    public static void renderLaser(PoseStack pose, Player player, float ticks, InteractionHand hand, final int range, float speedModifier) {
         Vec3 playerPos = player.getEyePosition(ticks);
         HitResult trace = player.pick(range, 0.0F, false);
-        drawLasers(hand, stack, pose, playerPos, trace, 0, 0, 0, 100F / 255f, 0F / 255f, 2F / 255f, 0.02f, player, ticks, speedModifier);
+        drawLasers(hand, pose, playerPos, trace, 0, 0, 0, 100F / 255f, 0F / 255f, 2F / 255f, 0.02f, player, ticks, speedModifier);
     }
 
     /**
      * Citation/source/author
-     *
-     *
-     * https://github.com/Direwolf20-MC/MiningGadgets
-     *
+     * <a href="https://github.com/Direwolf20-MC/MiningGadgets">...</a>
      */
-    public static void drawLasers(InteractionHand activeHand, ItemStack stack, PoseStack matrix, Vec3 from, HitResult trace, double xOffset, double yOffset, double zOffset, float r, float g, float b, float thickness, Player player, float ticks, float speedModifier) {
+    public static void drawLasers(InteractionHand activeHand, PoseStack matrix, Vec3 from, HitResult trace, double xOffset, double yOffset, double zOffset, float r, float g, float b, float thickness, Player player, float ticks, float speedModifier) {
         VertexConsumer builder;
         double distance = Math.max(1, from.subtract(trace.getLocation()).length());
         long gameTime = player.level().getGameTime();
@@ -70,13 +63,13 @@ public class RenderEntityToBlockLaser {
         Matrix4f positionMatrix = matrixstack$entry.pose();
         //additive laser beam
         builder = buffer.getBuffer(LaserRenderType.LASER_MAIN_ADDITIVE);
-        drawBeam(stack, xOffset, yOffset, zOffset, builder, positionMatrix, matrixNormal, additiveThickness, activeHand, distance, 0.5, 1, ticks, r, g, b, 0.7f);
+        drawBeam(xOffset, yOffset, zOffset, builder, positionMatrix, matrixNormal, additiveThickness, activeHand, distance, 0.5, 1, ticks, r, g, b, 0.7f);
         //main laser, colored part
         builder = buffer.getBuffer(LaserRenderType.LASER_MAIN_BEAM);
-        drawBeam(stack, xOffset, yOffset, zOffset, builder, positionMatrix, matrixNormal, thickness, activeHand, distance, v, v + distance * 1.5, ticks, r, g, b, 1f);
+        drawBeam(xOffset, yOffset, zOffset, builder, positionMatrix, matrixNormal, thickness, activeHand, distance, v, v + distance * 1.5, ticks, r, g, b, 1f);
         //core
         builder = buffer.getBuffer(LaserRenderType.LASER_MAIN_CORE);
-        drawBeam(stack, xOffset, yOffset, zOffset, builder, positionMatrix, matrixNormal, thickness / 2, activeHand, distance, v, v + distance * 1.5, ticks, beam2r, beam2g, beam2b, 1f);
+        drawBeam(xOffset, yOffset, zOffset, builder, positionMatrix, matrixNormal, thickness / 2, activeHand, distance, v, v + distance * 1.5, ticks, beam2r, beam2g, beam2b, 1f);
         matrix.popPose();
         //      RenderSystem.disableDepthTest();
         buffer.endBatch();
@@ -84,12 +77,9 @@ public class RenderEntityToBlockLaser {
 
     /**
      * Citation/source/author
-     *
-     *
-     * https://github.com/Direwolf20-MC/MiningGadgets
-     *
+     * <a href="https://github.com/Direwolf20-MC/MiningGadgets">...</a>
      */
-    private static void drawBeam(ItemStack stack, double xOffset, double yOffset, double zOffset, VertexConsumer builder, Matrix4f positionMatrix, Matrix3f matrixNormalIn, float thickness, InteractionHand hand, double distance, double v1, double v2, float ticks, float r, float g, float b, float alpha) {
+    private static void drawBeam(double xOffset, double yOffset, double zOffset, VertexConsumer builder, Matrix4f positionMatrix, Matrix3f matrixNormalIn, float thickness, InteractionHand hand, double distance, double v1, double v2, float ticks, float r, float g, float b, float alpha) {
         Vector3f vector3f = new Vector3f(0.0f, 1.0f, 0.0f);
         vector3f.mul(matrixNormalIn); //  vector3f = matrixNormalIn.transform(vector3f);
         LocalPlayer player = Minecraft.getInstance().player;

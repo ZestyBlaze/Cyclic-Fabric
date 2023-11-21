@@ -36,7 +36,7 @@ public class EventRender {
                     // objectMouseOver became hitResult
                     if (mc.crosshairPickEntity != null) {
                         //Render and Shoot
-                        RenderEntityToBlockLaser.renderLaser(context.matrixStack(), player, mc.getFrameTime(), stack, InteractionHand.MAIN_HAND, 18, -0.02F); // TODO
+                        RenderEntityToBlockLaser.renderLaser(context.matrixStack(), player, mc.getFrameTime(), InteractionHand.MAIN_HAND, 18, -0.02F); // TODO
                     } else {
                         //out of range- do custom raytrace
                         double laserGamemodeRange = mc.gameMode.getPickRange() * LaserItem.RANGE_FACTOR;
@@ -59,7 +59,7 @@ public class EventRender {
                                     //we hit a wall, dont shoot thru walls
                                 } else {
                                     //Render and Shoot
-                                    RenderEntityToBlockLaser.renderLaser(context.matrixStack(), player, mc.getFrameTime(), stack, InteractionHand.MAIN_HAND);
+                                    RenderEntityToBlockLaser.renderLaser(context.matrixStack(), player, mc.getFrameTime(), InteractionHand.MAIN_HAND);
                                 }
                             }
                         }

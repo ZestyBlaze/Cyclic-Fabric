@@ -17,6 +17,14 @@ public class EntityUtil {
     private static final float ITEMSPEEDFAR = 0.9F;
     private static final float ITEMSPEEDCLOSE = 0.2F;
 
+    public static double getSpeedTranslated(double speed) {
+        return speed * 100;
+    }
+
+    public static AABB makeBoundingBox(BlockPos center, int hRadius, int vRadius) {
+        return makeBoundingBox(center.getX(), center.getY(), center.getZ(), hRadius, vRadius);
+    }
+
     public static AABB makeBoundingBox(double x, double y, double z, int hRadius, int vRadius) {
         return new AABB(
                 x - hRadius, y - vRadius, z - hRadius,

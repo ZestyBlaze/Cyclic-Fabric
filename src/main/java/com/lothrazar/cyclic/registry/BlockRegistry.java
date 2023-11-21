@@ -2,6 +2,7 @@ package com.lothrazar.cyclic.registry;
 
 import com.google.common.collect.Sets;
 import com.lothrazar.cyclic.ModCyclic;
+import com.lothrazar.cyclic.block.BlockCyclic;
 import com.lothrazar.cyclic.block.BlockSimple;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -31,14 +32,14 @@ public class BlockRegistry {
             .build();
 
     private static final CreativeModeTab BLOCKS_TAB = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(Items.GRASS))
+            .icon(() -> new ItemStack(BlockRegistry.COMPRESSED_COBBLESTONE))
             .title(Component.translatable("itemGroup." + ModCyclic.MODID))
             .displayItems((enabledFlags, populator) -> {
                 BlockRegistry.BLOCKS.forEach(block -> populator.accept(block.asItem()));
             })
             .build();
 
-    public static List<Block> BLOCKSCLIENTREGISTRY = new ArrayList<>();
+    public static List<BlockCyclic> BLOCKSCLIENTREGISTRY = new ArrayList<>();
     private static final ResourceKey<CreativeModeTab> TAB_ITEMS = ResourceKey.create(Registries.CREATIVE_MODE_TAB, new ResourceLocation(ModCyclic.MODID, "items"));
     private static final ResourceKey<CreativeModeTab> TAB_BLOCKS = ResourceKey.create(Registries.CREATIVE_MODE_TAB, new ResourceLocation(ModCyclic.MODID, "tab"));
     public static final Set<Block> BLOCKS = Sets.newLinkedHashSet();

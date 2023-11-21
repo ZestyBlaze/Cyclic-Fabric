@@ -2,13 +2,16 @@ package com.lothrazar.cyclic.flib;
 
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.registry.AttributeRegistry;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.UUID;
 
 public class AttributesUtil {
+    public static final UUID DEFAULT_ID = UUID.fromString("06d30aa2-eff2-4a81-b92b-a1cb95f115c6");
     public static final UUID ID_STEP_HEIGHT = UUID.fromString("66d30aa2-eaa2-4a81-b92b-a1cb95f115ca");
     static final float VANILLA = 0.6F;
 
@@ -43,6 +46,21 @@ public class AttributesUtil {
         if (newVal != 0) {
             AttributeModifier healthModifier = new AttributeModifier(ID_STEP_HEIGHT, ModCyclic.MODID, newVal, AttributeModifier.Operation.ADDITION);
             attr.addPermanentModifier(healthModifier);
+        }
+    }
+
+    public static void updateAttrModifierBy(Attribute attr, UUID id, Player playerIn, int value) {
+        AttributeInstance healthAttribute = playerIn.getAttribute(attr);
+        AttributeModifier oldHealthModifier = healthAttribute.getModifier(id);
+        //what is our value
+        double old = oldHealthModifier == null ? 0 : oldHealthModifier.getAmount();
+        double newVal = value + old;
+        healthAttribute.removeModifier(id);
+        AttributeModifier healthModifier = new AttributeModifier(id, "Bonus", newVal, AttributeModifier.Operation.ADDITION);
+        healthAttribute.addPermanentModifier(healthModifier);
+        if (attr == Attributes.MAX_HEALTH
+                && playerIn.getHealth() > healthAttribute.getValue()) {
+            playerIn.setHealth((float) healthAttribute.getValue());
         }
     }
 }

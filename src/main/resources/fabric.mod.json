@@ -38,5 +38,6 @@
 		"cardinal-components": [
 			"cyclic:cyclic_player"
 		]
-	}
+	},
+	"accessWidener": "cyclic.accessWidener"
 }

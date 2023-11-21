@@ -8,9 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 
 /**
  * Citation/source/author
- *
- *
- * https://github.com/Direwolf20-MC/MiningGadgets
+ * <a href="https://github.com/Direwolf20-MC/MiningGadgets">...</a>
  *
  */
 public class LaserRenderType extends RenderType {

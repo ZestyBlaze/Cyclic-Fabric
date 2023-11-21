@@ -61,4 +61,9 @@ public class BlockCyclic extends EntityBlockFlib {
         BlockState newState = state.rotate(direction);
         return newState;
     }
+
+    /**
+     * Override per block for render-ers/screens/etc
+     */
+    public void registerClient() {}
 }

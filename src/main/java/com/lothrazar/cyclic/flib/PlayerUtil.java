@@ -7,9 +7,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class PlayerUtil {
     public static Item getItemArmorSlot(Player player, EquipmentSlot slot) {
-        ItemStack inslot = player.getInventory().armor.get(slot.getIndex());
-        //    ItemStack inslot = player.inventory.armorInventory[slot.getIndex()];
-        Item item = (inslot.isEmpty()) ? null : inslot.getItem();
-        return item;
+        ItemStack inSlot = player.getInventory().armor.get(slot.getIndex());
+        return (inSlot.isEmpty()) ? null : inSlot.getItem();
     }
 }

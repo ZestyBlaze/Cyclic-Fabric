@@ -23,16 +23,6 @@ public class ParticleUtil {
         }
     }
 
-    /**
-     * always check IS CLIENTSIDE before this
-     *
-     * @param world
-     * @param sparkle
-     * @param x
-     * @param y
-     * @param z
-     * @param count
-     */
     private static void spawnParticle(Level world, ParticleOptions sparkle, float x, float y, float z, int count) {
         for (int countparticles = 0; countparticles <= count; ++countparticles) {
             Minecraft.getInstance().particleEngine.createParticle(sparkle,

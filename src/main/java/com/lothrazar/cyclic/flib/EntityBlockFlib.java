@@ -35,7 +35,7 @@ public abstract class EntityBlockFlib extends BlockFlib implements EntityBlock {
     public boolean triggerEvent(BlockState bs, Level level, BlockPos pos, int a, int b) {
         super.triggerEvent(bs, level, pos, a, b);
         BlockEntity blockentity = level.getBlockEntity(pos);
-        return blockentity == null ? false : blockentity.triggerEvent(a, b);
+        return blockentity != null && blockentity.triggerEvent(a, b);
     }
 
     @Override

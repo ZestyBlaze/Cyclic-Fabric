@@ -7,8 +7,7 @@ import java.util.List;
 
 public class ShapeUtil {
     public static List<BlockPos> cubeSquareBase(final BlockPos pos, int radius, int height) {
-        List<BlockPos> shape = new ArrayList<BlockPos>();
-        // search in a cube
+        List<BlockPos> shape = new ArrayList<>();
         int xMin = pos.getX() - radius;
         int xMax = pos.getX() + radius;
         int zMin = pos.getZ() - radius;

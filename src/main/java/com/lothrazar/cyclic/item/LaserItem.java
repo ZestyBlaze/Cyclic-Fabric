@@ -15,6 +15,12 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.*;
 
+/**
+ * TODO: Carry on updating this.
+ * It should use NO client sided code, all server sided logic
+ * `use` can be used to handle if it should initially fire or not
+ * Energy Drain is handled in `onUseTick` while scanning for if still looking at an entity.
+ */
 public class LaserItem extends ItemBaseCyclic {
     public static final int DMG_FAR = 4;
     public static final int COST = 50;
