@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 
 public class SoundRegistry {
+    public static final SoundEvent CHAOS_REAPER = register("chaos_reaper");
     public static final SoundEvent FIRELAUNCH = register("firelaunch");
     public static final SoundEvent LASERBEANPEW = register("laserbeanpew");
     public static final SoundEvent STEP_HEIGHT_UP = register("step_height_up");

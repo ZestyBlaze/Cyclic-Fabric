@@ -3,6 +3,7 @@ package com.lothrazar.cyclic.item.food;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -25,7 +26,7 @@ public class AppleChocolate extends ItemBaseCyclic {
         while (itr.hasNext()) {
             MobEffectInstance effect = itr.next();
             if (!effect.getEffect().isBeneficial()) {
-                effect.getEffect().removeAttributeModifiers(entityLiving, entityLiving.getAttributes(), effect.getAmplifier());
+                effect.getEffect().removeAttributeModifiers(entityLiving.getAttributes());
                 itr.remove();
                 entityLiving.effectsDirty = true;
                 if (entityLiving instanceof Player player) {

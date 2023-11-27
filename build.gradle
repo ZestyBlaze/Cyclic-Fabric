@@ -12,7 +12,7 @@ base {
 
 repositories {
 	maven { url "https://maven.parchmentmc.org" } // Parchment
-	maven { url "https://maven.ladysnake.org/releases" } // Cardinal Components
+	maven { url "https://maven.ladysnake.org/releases" } // Cardinal Components, PAL
 	maven { url "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
 }
 
@@ -24,16 +24,15 @@ dependencies {
 	}
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.0"
 
-	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.2.2"
-	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:5.2.2"
-	include "dev.onyxstudios.cardinal-components-api:cardinal-components-base:5.2.2"
-	include "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:5.2.2"
+	modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${project.config_version}"
 
-	include modApi('teamreborn:energy:3.0.0') {
-		transitive = false
-	}
+	modApi include("teamreborn:energy:${project.energy_version}")
+
+	modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cc_version}")
+	modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cc_version}")
+
+	modImplementation include("io.github.ladysnake:PlayerAbilityLib:${pal_version}")
 }
 
 processResources {

@@ -3,15 +3,17 @@
 	"id": "cyclic",
 	"version": "${version}",
 	"name": "Cyclic",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Tools, Machines, Gear, Potions, Villagers. Fully Configurable",
 	"authors": [
-		"Me!"
+		"Lothrazar",
+		"ZestyBlaze"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "",
+		"sources": "https://github.com/ZestyBlaze/Cyclic-Fabric",
+		"issues": "https://github.com/ZestyBlaze/Cyclic-Fabric/issues"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/cyclic/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -32,7 +34,8 @@
 		"fabricloader": ">=0.14.24",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"forgeconfigapiport": ">=9.0.0"
 	},
 	"custom": {
 		"cardinal-components": [

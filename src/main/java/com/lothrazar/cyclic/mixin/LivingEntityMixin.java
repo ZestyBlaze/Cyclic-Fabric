@@ -2,7 +2,6 @@ package com.lothrazar.cyclic.mixin;
 
 import com.lothrazar.cyclic.potion.CyclicMobEffect;
 import com.lothrazar.cyclic.registry.AttributeRegistry;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -35,6 +34,13 @@ public abstract class LivingEntityMixin {
             if (mobEffect.getEffect() instanceof CyclicMobEffect cyclicMobEffect) {
                 cyclicMobEffect.tick(livingEntity);
             }
+        }
+    }
+
+    @Inject(method = "onEffectRemoved", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/effect/MobEffect;removeAttributeModifiers(Lnet/minecraft/world/entity/ai/attributes/AttributeMap;)V"))
+    private void cyclic$onEffectRemoved(MobEffectInstance effectInstance, CallbackInfo ci) {
+        if (effectInstance.getEffect() instanceof CyclicMobEffect cyclicMobEffect) {
+            cyclicMobEffect.onRemoved((LivingEntity)(Object)this);
         }
     }
 }

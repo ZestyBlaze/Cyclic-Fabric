@@ -84,21 +84,27 @@ public class ItemRegistry {
     public static final Item APPLE_CHOCOLATE = register("apple_chocolate", new AppleChocolate(new FabricItemSettings().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR * 4)
             .alwaysEat().build())));
     public static final Item GLOWING_HELMET = register("glowing_helmet", new GlowingHelmetItem(MaterialRegistry.ArmorMats.GLOWING, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item CHORUS_FLIGHT = register("chorus_flight", new EdibleFlightItem(new FabricItemSettings()));
 
     public static final Item GEM_AMBER = register("gem_amber", new GemstoneItem(new FabricItemSettings()));
 
-    public static final Item HEART = register("heart", new HeartItem(new FabricItemSettings().stacksTo(16)));
-    public static final Item HEART_EMPTY = register("heart_empty", new HeartToxicItem(new FabricItemSettings().stacksTo(16)));
+    public static final Item HEART = register("heart", new HeartItem(new FabricItemSettings().maxCount(16)));
+    public static final Item HEART_EMPTY = register("heart_empty", new HeartToxicItem(new FabricItemSettings().maxCount(16)));
 
     public static final Item STIRRUPS = register("stirrups", new StirrupsItem(new FabricItemSettings().maxDamage(256)));
     public static final Item STIRRUPS_REVERSE = register("stirrups_reverse", new StirrupsReverseItem(new FabricItemSettings().maxDamage(256)));
-    public static final Item LEVER_REMOTE = register("lever_remote", new LeverRemote(new FabricItemSettings().stacksTo(1)));
+    public static final Item LEVER_REMOTE = register("lever_remote", new LeverRemote(new FabricItemSettings().maxCount(1)));
 
     public static final Item DIAMOND_CARROT_HEALTH = register("diamond_carrot_health", new ItemHorseHealthDiamondCarrot(new FabricItemSettings()));
     public static final Item REDSTONE_CARROT_SPEED = register("redstone_carrot_speed", new ItemHorseRedstoneSpeed(new FabricItemSettings()));
     public static final Item EMERALD_CARROT_JUMP = register("emerald_carrot_jump", new ItemHorseEmeraldJump(new FabricItemSettings()));
     public static final Item LAPIS_CARROT_VARIANT = register("lapis_carrot_variant", new ItemHorseLapisVariant(new FabricItemSettings()));
     public static final Item TOXIC_CARROT = register("toxic_carrot", new ItemHorseToxic(new FabricItemSettings()));
+
+    public static final Item EMERALD_BOOTS = register("emerald_boots", new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item EMERALD_HELMET = register("emerald_helmet", new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item EMERALD_CHESTPLATE = register("emerald_chestplate", new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item EMERALD_LEGGINGS = register("emerald_leggings", new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
 
     public static final Item FIRE_KILLER = register("fire_killer", new FireExtinguishItem(new FabricItemSettings()));
     public static final Item MILK_BOTTLE = register("milk_bottle", new MilkBottle(new FabricItemSettings().food(new FoodProperties.Builder().alwaysEat().build())));

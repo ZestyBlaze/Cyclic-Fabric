@@ -4,7 +4,7 @@ import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import org.apache.logging.log4j.Logger;
 
 public class CyclicLogger {
-    private Logger logger;
+    private final Logger logger;
     public static BooleanValue LOGINFO;
 
     public CyclicLogger(Logger logger) {
@@ -20,7 +20,6 @@ public class CyclicLogger {
     }
 
     public void info(String string) {
-        //default for all releases is false to prevent spam-logs slipping out
         if (LOGINFO.get()) {
             logger.info(string);
         }

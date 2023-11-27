@@ -1,6 +1,9 @@
 package com.lothrazar.cyclic.flib;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -19,5 +22,16 @@ public class SoundUtil {
         if (entityIn != null && entityIn.level().isClientSide) {
             entityIn.playSound(soundIn, volume, pitch);
         }
+    }
+
+    public static void playSoundFromServer(ServerPlayer entityIn, SoundEvent soundIn, float vol, float pitch) {
+        if (soundIn == null || entityIn == null) {
+            return;
+        }
+        entityIn.connection.send(new ClientboundSoundPacket(
+                Holder.direct(soundIn),
+                SoundSource.BLOCKS,
+                entityIn.xOld, entityIn.yOld, entityIn.zOld,
+                vol, pitch, entityIn.level().getRandom().nextLong()));
     }
 }

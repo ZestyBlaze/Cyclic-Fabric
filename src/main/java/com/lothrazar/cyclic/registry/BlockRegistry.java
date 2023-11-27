@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.BlockCyclic;
 import com.lothrazar.cyclic.block.BlockSimple;
+import com.lothrazar.cyclic.block.LavaSpongeBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -16,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -47,6 +49,8 @@ public class BlockRegistry {
         @Override
         public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {}
     });
+
+    public static final Block SPONGE_LAVA = register("sponge_lava", new LavaSpongeBlock(FabricBlockSettings.create().sound(SoundType.SPORE_BLOSSOM).lightLevel(p -> 2)));
 
     private static Block register(String name, Block block) {
         Block returnBlock = Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(ModCyclic.MODID, name), block);

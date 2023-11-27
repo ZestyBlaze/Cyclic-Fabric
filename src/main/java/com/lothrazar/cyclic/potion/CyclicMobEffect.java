@@ -10,4 +10,6 @@ public class CyclicMobEffect extends MobEffect {
     }
 
     public void tick(LivingEntity entity) {}
+
+    public void onRemoved(LivingEntity entity) {}
 }

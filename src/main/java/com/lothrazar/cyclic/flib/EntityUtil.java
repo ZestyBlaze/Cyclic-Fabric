@@ -5,6 +5,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
@@ -85,5 +86,9 @@ public class EntityUtil {
         double motionY = finalVector.y * modifier;
         double motionZ = finalVector.z * modifier;
         entity.setDeltaMovement(motionX, motionY, motionZ);
+    }
+
+    public static void setCooldownItem(Player player, Item item, int cooldown) {
+        player.getCooldowns().addCooldown(item, cooldown);
     }
 }
