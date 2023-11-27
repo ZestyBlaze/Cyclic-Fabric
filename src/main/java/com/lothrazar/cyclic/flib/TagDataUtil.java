@@ -2,9 +2,29 @@ package com.lothrazar.cyclic.flib;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 public class TagDataUtil {
+    public static final String SKULLOWNER = "SkullOwner";
+
+    public static ItemStack buildNamedPlayerSkull(Player player) {
+        return buildNamedPlayerSkull(player.getDisplayName().getString());
+    }
+
+    public static ItemStack buildNamedPlayerSkull(String displayNameString) {
+        CompoundTag t = new CompoundTag();
+        t.putString(SKULLOWNER, displayNameString);
+        return buildSkullFromTag(t);
+    }
+
+    public static ItemStack buildSkullFromTag(CompoundTag player) {
+        ItemStack skull = new ItemStack(Items.PLAYER_HEAD);
+        skull.setTag(player);
+        return skull;
+    }
+
     public static void setItemStackBlockPos(ItemStack item, BlockPos pos) {
         if (pos == null || item.isEmpty()) {
             return;

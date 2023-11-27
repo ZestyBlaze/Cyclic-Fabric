@@ -1,5 +1,6 @@
 package com.lothrazar.cyclic;
 
+import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import com.lothrazar.cyclic.config.ConfigRegistry;
 import com.lothrazar.cyclic.registry.*;
 import net.fabricmc.api.ModInitializer;
@@ -12,6 +13,7 @@ public class ModCyclic implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		MixinExtrasBootstrap.init();
 		ConfigRegistry cfg = new ConfigRegistry();
 		cfg.setupMain();
 		cfg.setupClient();

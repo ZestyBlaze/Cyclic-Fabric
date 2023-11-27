@@ -16,7 +16,7 @@ public abstract class EnchantmentFlib extends Enchantment {
     public abstract boolean isEnabled();
 
     public int getCurrentLevelTool(ItemStack stack) {
-        if (stack.isEmpty() == false && EnchantmentHelper.getEnchantments(stack).containsKey(this)
+        if (!stack.isEmpty() && EnchantmentHelper.getEnchantments(stack).containsKey(this)
                 && stack.getItem() != Items.ENCHANTED_BOOK) {
             return EnchantmentHelper.getEnchantments(stack).get(this);
         }
@@ -26,9 +26,11 @@ public abstract class EnchantmentFlib extends Enchantment {
     protected int getCurrentArmorLevelSlot(LivingEntity player, EquipmentSlot type) {
         ItemStack armor = player.getItemBySlot(type);
         int level = 0;
-        if (armor.isEmpty() == false && EnchantmentHelper.getEnchantments(armor) != null
-                && EnchantmentHelper.getEnchantments(armor).containsKey(this)) {
-            level = EnchantmentHelper.getEnchantments(armor).get(this);
+        if (!armor.isEmpty()) {
+            EnchantmentHelper.getEnchantments(armor);
+            if (EnchantmentHelper.getEnchantments(armor).containsKey(this)) {
+                level = EnchantmentHelper.getEnchantments(armor).get(this);
+            }
         }
         return level;
     }
@@ -40,12 +42,13 @@ public abstract class EnchantmentFlib extends Enchantment {
         int level = 0;
         for (EquipmentSlot slot : armors) {
             ItemStack armor = player.getItemBySlot(slot);
-            if (armor.isEmpty() == false
-                    && EnchantmentHelper.getEnchantments(armor) != null
-                    && EnchantmentHelper.getEnchantments(armor).containsKey(this)) {
-                int newlevel = EnchantmentHelper.getEnchantments(armor).get(this);
-                if (newlevel > level) {
-                    level = newlevel;
+            if (!armor.isEmpty()) {
+                EnchantmentHelper.getEnchantments(armor);
+                if (EnchantmentHelper.getEnchantments(armor).containsKey(this)) {
+                    int newlevel = EnchantmentHelper.getEnchantments(armor).get(this);
+                    if (newlevel > level) {
+                        level = newlevel;
+                    }
                 }
             }
         }
@@ -61,7 +64,7 @@ public abstract class EnchantmentFlib extends Enchantment {
             return ItemStack.EMPTY;
         }
         for (ItemStack main : player.getArmorSlots()) {
-            if ((main.isEmpty() == false) && EnchantmentHelper.getEnchantments(main).containsKey(this)) {
+            if ((!main.isEmpty()) && EnchantmentHelper.getEnchantments(main).containsKey(this)) {
                 return main;
             }
         }

@@ -1,6 +1,8 @@
 package com.lothrazar.cyclic.registry;
 
 import com.lothrazar.cyclic.ModCyclic;
+import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
+import com.lothrazar.cyclic.enchant.BeheadingEnchant;
 import com.lothrazar.cyclic.enchant.EnderPearlEnchant;
 import com.lothrazar.cyclic.enchant.LastStandEnchant;
 import net.minecraft.core.Registry;
@@ -13,6 +15,8 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 public class EnchantRegistry {
     private static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[] { EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET };
 
+    public static final Enchantment BEHEADING = register(BeheadingEnchant.ID, new BeheadingEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+    public static final Enchantment AUTOSMELT = register(AutoSmeltEnchant.ID, new AutoSmeltEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
     public static final Enchantment PEARL = register(EnderPearlEnchant.ID, new EnderPearlEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
     public static final Enchantment STAND = register(LastStandEnchant.ID, new LastStandEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.ARMOR_LEGS, EquipmentSlot.LEGS));
 

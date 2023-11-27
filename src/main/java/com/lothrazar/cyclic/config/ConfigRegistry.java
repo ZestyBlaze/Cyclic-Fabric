@@ -3,6 +3,8 @@ package com.lothrazar.cyclic.config;
 import com.lothrazar.cyclic.CyclicLogger;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.LavaSpongeBlock;
+import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
+import com.lothrazar.cyclic.enchant.BeheadingEnchant;
 import com.lothrazar.cyclic.enchant.EnderPearlEnchant;
 import com.lothrazar.cyclic.enchant.LastStandEnchant;
 import com.lothrazar.cyclic.flib.ConfigTemplate;
@@ -180,13 +182,13 @@ public class ConfigRegistry extends ConfigTemplate {
         CFG.comment(WALL, " Enchantment related configs (if disabled, they may still show up as NBT on books and such but have functions disabled and are not obtainable in survival)", WALL)
                 .push("enchantment");
         ////////////////////////////////////////////////////////////////// enchantment
-        //AutoSmeltEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(AutoSmeltEnchant.ID + ".enabled", true);
+        AutoSmeltEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(AutoSmeltEnchant.ID + ".enabled", true);
         //BeekeeperEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(BeekeeperEnchant.ID + ".enabled", true);
-        //BeheadingEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(BeheadingEnchant.ID + ".enabled", true);
-        //BEHEADING_SKINS = CFG.comment("Beheading enchant add player skin head drop, add any mob id and any skin").defineList(BeheadingEnchant.ID + ".EntityMHF", BEHEADING,
-                //it -> it instanceof String);
-        //BeheadingEnchant.PERCDROP = CFG.comment("Base perecentage chance to drop a head on kill").defineInRange(BeheadingEnchant.ID + ".percent", 20, 1, 99);
-        //BeheadingEnchant.PERCPERLEVEL = CFG.comment("Percentage increase per level of enchant. Formula [percent + (level - 1) * per_level] ").defineInRange(BeheadingEnchant.ID + ".per_level", 25, 1, 99);
+        BeheadingEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(BeheadingEnchant.ID + ".enabled", true);
+        BEHEADING_SKINS = CFG.comment("Beheading enchant add player skin head drop, add any mob id and any skin").defineList(BeheadingEnchant.ID + ".EntityMHF", BEHEADING,
+                it -> it instanceof String);
+        BeheadingEnchant.PERCDROP = CFG.comment("Base perecentage chance to drop a head on kill").defineInRange(BeheadingEnchant.ID + ".percent", 20, 1, 99);
+        BeheadingEnchant.PERCPERLEVEL = CFG.comment("Percentage increase per level of enchant. Formula [percent + (level - 1) * per_level] ").defineInRange(BeheadingEnchant.ID + ".per_level", 25, 1, 99);
         //GloomCurseEnchant.CFG = CFG.comment("(Gloom) Set false to stop enchantment from working").define(GloomCurseEnchant.ID + ".enabled", true);
         //DisarmEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(DisarmEnchant.ID + ".enabled", true);
         //ExcavationEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(ExcavationEnchant.ID + ".enabled", true);
