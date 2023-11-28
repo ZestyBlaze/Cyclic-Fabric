@@ -29,11 +29,11 @@ public class BlockMixin {
             at = @At("RETURN")
     )
     private static List<ItemStack> cyclic$getDrops(List<ItemStack> original, BlockState state, ServerLevel level, BlockPos pos, @Nullable BlockEntity blockEntity, @Nullable Entity entity, ItemStack tool) {
-        List<ItemStack> items = new ArrayList<>();
-
         if (EnchantmentHelper.getItemEnchantmentLevel(EnchantRegistry.AUTOSMELT, tool) == 0) {
             return original;
         }
+
+        List<ItemStack> items = new ArrayList<>();
 
         for (ItemStack itemStack : original) {
             Optional<RecipeHolder<SmeltingRecipe>> recipe = level.getRecipeManager().getRecipeFor(RecipeType.SMELTING, new SimpleContainer(itemStack), level);

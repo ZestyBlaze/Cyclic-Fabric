@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class InventoryMixin {
     @Shadow @Final public Player player;
 
-    @Inject(method = "tick", at = @At("HEAD"))
+    @Inject(method = "tick", at = @At("TAIL"))
     private void cyclic$tick(CallbackInfo ci) {
         player.getArmorSlots().forEach(stack -> {
             if(stack.getItem() instanceof ArmorTickingItem item) {
