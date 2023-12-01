@@ -1,10 +1,7 @@
 package com.lothrazar.cyclic.registry;
 
 import com.lothrazar.cyclic.ModCyclic;
-import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
-import com.lothrazar.cyclic.enchant.BeheadingEnchant;
-import com.lothrazar.cyclic.enchant.EnderPearlEnchant;
-import com.lothrazar.cyclic.enchant.LastStandEnchant;
+import com.lothrazar.cyclic.enchant.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -17,7 +14,10 @@ public class EnchantRegistry {
 
     public static final Enchantment BEHEADING = register(BeheadingEnchant.ID, new BeheadingEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
     public static final Enchantment AUTOSMELT = register(AutoSmeltEnchant.ID, new AutoSmeltEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
+    public static final Enchantment DISARM = register(DisarmEnchant.ID, new DisarmEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+    public static final Enchantment CURSE = register(GloomCurseEnchant.ID, new GloomCurseEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.ARMOR, EquipmentSlot.CHEST));
     public static final Enchantment PEARL = register(EnderPearlEnchant.ID, new EnderPearlEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+    public static final Enchantment BEEKEEPER = register(BeekeeperEnchant.ID, new BeekeeperEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.ARMOR_HEAD, EquipmentSlot.HEAD));
     public static final Enchantment STAND = register(LastStandEnchant.ID, new LastStandEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.ARMOR_LEGS, EquipmentSlot.LEGS));
 
     private static Enchantment register(String name, Enchantment enchantment) {

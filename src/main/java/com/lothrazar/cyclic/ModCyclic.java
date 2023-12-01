@@ -4,7 +4,6 @@ import com.llamalad7.mixinextras.MixinExtrasBootstrap;
 import com.lothrazar.cyclic.config.ConfigRegistry;
 import com.lothrazar.cyclic.registry.*;
 import net.fabricmc.api.ModInitializer;
-
 import org.apache.logging.log4j.LogManager;
 
 public class ModCyclic implements ModInitializer {
@@ -26,6 +25,5 @@ public class ModCyclic implements ModInitializer {
 		EnchantRegistry.init();
 		AttributeRegistry.register();
 		MaterialRegistry.init();
-		PacketRegistry.registerC2S();
 	}
 }

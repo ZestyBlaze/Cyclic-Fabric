@@ -1,7 +1,6 @@
 package com.lothrazar.cyclic.item.animal;
 
 import com.lothrazar.cyclic.flib.ChatUtil;
-import com.lothrazar.cyclic.flib.EntityUtil;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

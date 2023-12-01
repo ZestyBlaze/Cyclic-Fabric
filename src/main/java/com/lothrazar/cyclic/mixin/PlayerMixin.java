@@ -1,6 +1,7 @@
 package com.lothrazar.cyclic.mixin;
 
 import com.lothrazar.cyclic.item.elemental.FireballItem;
+import com.lothrazar.cyclic.item.equipment.GlowingHelmetItem;
 import com.lothrazar.cyclic.item.food.LoftyStatureApple;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,5 +18,6 @@ public class PlayerMixin {
     private void cyclic$tick(CallbackInfo ci) {
         LoftyStatureApple.onUpdate(player);
         FireballItem.tickHoldingFireball(player);
+        GlowingHelmetItem.onEntityUpdate(player);
     }
 }

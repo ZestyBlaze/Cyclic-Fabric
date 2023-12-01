@@ -3,10 +3,7 @@ package com.lothrazar.cyclic.config;
 import com.lothrazar.cyclic.CyclicLogger;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.LavaSpongeBlock;
-import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
-import com.lothrazar.cyclic.enchant.BeheadingEnchant;
-import com.lothrazar.cyclic.enchant.EnderPearlEnchant;
-import com.lothrazar.cyclic.enchant.LastStandEnchant;
+import com.lothrazar.cyclic.enchant.*;
 import com.lothrazar.cyclic.flib.ConfigTemplate;
 import com.lothrazar.cyclic.item.food.EdibleFlightItem;
 import com.lothrazar.cyclic.item.food.EnderApple;
@@ -183,15 +180,19 @@ public class ConfigRegistry extends ConfigTemplate {
                 .push("enchantment");
         ////////////////////////////////////////////////////////////////// enchantment
         AutoSmeltEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(AutoSmeltEnchant.ID + ".enabled", true);
-        //BeekeeperEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(BeekeeperEnchant.ID + ".enabled", true);
+        BeekeeperEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(BeekeeperEnchant.ID + ".enabled", true);
         BeheadingEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(BeheadingEnchant.ID + ".enabled", true);
         BEHEADING_SKINS = CFG.comment("Beheading enchant add player skin head drop, add any mob id and any skin").defineList(BeheadingEnchant.ID + ".EntityMHF", BEHEADING,
                 it -> it instanceof String);
         BeheadingEnchant.PERCDROP = CFG.comment("Base perecentage chance to drop a head on kill").defineInRange(BeheadingEnchant.ID + ".percent", 20, 1, 99);
         BeheadingEnchant.PERCPERLEVEL = CFG.comment("Percentage increase per level of enchant. Formula [percent + (level - 1) * per_level] ").defineInRange(BeheadingEnchant.ID + ".per_level", 25, 1, 99);
-        //GloomCurseEnchant.CFG = CFG.comment("(Gloom) Set false to stop enchantment from working").define(GloomCurseEnchant.ID + ".enabled", true);
-        //DisarmEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(DisarmEnchant.ID + ".enabled", true);
-        //ExcavationEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(ExcavationEnchant.ID + ".enabled", true);
+        GloomCurseEnchant.CFG = CFG.comment("(Gloom) Set false to stop enchantment from working").define(GloomCurseEnchant.ID + ".enabled", true);
+        DisarmEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(DisarmEnchant.ID + ".enabled", true);
+        DisarmEnchant.PERCENTPERLEVEL = CFG.comment("Enchant level drop rate.  % = drop + (level-1)*drop").defineInRange(DisarmEnchant.ID + ".percentPerLevel", 15, 1, 100);
+        DISARM_IGNORE_LIST = CFG.comment("Mobs in this list cannot be disarmed and have their weapon stolen by the disarm enchantment")
+                .defineList(DisarmEnchant.ID + ".ingoredMobs", DISARM_IGNORE,
+                        it -> it instanceof String);
+        ExcavationEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(ExcavationEnchant.ID + ".enabled", true);
         //GrowthEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(GrowthEnchant.ID + ".enabled", true);
         //GrowthEnchant.RADIUSFACTOR = CFG.comment("Radius per level.  size around player to perform growth logic").defineInRange(GrowthEnchant.ID + ".radius", 2, 1, 16);
         //MultiJumpEnchant.CFG = CFG.comment("(Multijump) Set false to disable Multi Jump enchantment").define(MultiJumpEnchant.ID + ".enabled", true);
@@ -210,10 +211,6 @@ public class ConfigRegistry extends ConfigTemplate {
         //TravellerEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(TravellerEnchant.ID + ".enabled", true);
         //VenomEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(VenomEnchant.ID + ".enabled", true);
         //XpEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(XpEnchant.ID + ".enabled", true);
-        //DisarmEnchant.PERCENTPERLEVEL = CFG.comment("Enchant level drop rate.  % = drop + (level-1)*drop").defineInRange(DisarmEnchant.ID + ".percentPerLevel", 15, 1, 100);
-        //DISARM_IGNORE_LIST = CFG.comment("Mobs in this list cannot be disarmed and have their weapon stolen by the disarm enchantment")
-                //.defineList(DisarmEnchant.ID + ".ingoredMobs", DISARM_IGNORE,
-                        //it -> it instanceof String);
         CFG.pop(); //enchantment
         CFG.comment(WALL, " Worldgen settings  ", WALL).push("worldgen"); //////////////////////////////////////////////////////////////////////////////////////////// worldgen
         GENERATE_FLOWERS = CFG.comment("Do the four generate in the world. "

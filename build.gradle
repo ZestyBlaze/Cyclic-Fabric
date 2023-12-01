@@ -14,13 +14,15 @@ repositories {
 	maven { url "https://maven.parchmentmc.org" } // Parchment
 	maven { url "https://maven.ladysnake.org/releases" } // Cardinal Components, PAL
 	maven { url "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
+	maven { url "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+	maven { url "https://jitpack.io" } // ZestyLib
 }
 
 dependencies {
 	minecraft("com.mojang:minecraft:${project.minecraft_version}")
 	mappings loom.layered() {
 		officialMojangMappings()
-		parchment("org.parchmentmc.data:parchment-1.20.1:2023.09.03@zip")
+		parchment("org.parchmentmc.data:parchment-${project.minecraft_version}:${project.parchment_version}@zip")
 	}
 	modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
@@ -34,7 +36,7 @@ dependencies {
 
 	modImplementation(include("io.github.ladysnake:PlayerAbilityLib:${pal_version}"))
 
-	implementation(annotationProcessor(include("io.github.llamalad7:mixinextras-fabric:0.2.1")))
+	modImplementation include("com.github.ZestyBlaze:ZestyLib:${project.zlib_version}")
 }
 
 processResources {
@@ -64,6 +66,12 @@ jar {
 
 loom {
 	accessWidenerPath = file("src/main/resources/cyclic.accessWidener")
+}
+
+configurations.all {
+	resolutionStrategy {
+		force("net.fabricmc:fabric-loader:${project.loader_version}")
+	}
 }
 
 publishing {

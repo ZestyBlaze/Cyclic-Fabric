@@ -1,8 +1,16 @@
 package com.lothrazar.cyclic.registry;
 
+import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.material.EmeraldArmorMaterial;
 import com.lothrazar.cyclic.material.GlowingArmorMaterial;
+import dev.zestyblaze.zestylib.common.SimpleTier;
+import dev.zestyblaze.zestylib.common.ZLBlockTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 
@@ -23,6 +31,15 @@ public class MaterialRegistry {
     public static class ArmorMats {
         public static final ArmorMaterial EMERALD = new EmeraldArmorMaterial();
         public static final ArmorMaterial GLOWING = new GlowingArmorMaterial();
+    }
+
+    public static class ToolMats {
+        public static final Tier AMETHYST = new SimpleTier(Tiers.IRON.getLevel(),
+                Tiers.IRON.getUses() + 5, Tiers.IRON.getSpeed() + 0.2F, // uses aka durability
+                Tiers.IRON.getAttackDamageBonus() + 0.1F, Tiers.GOLD.getEnchantmentValue() * 2,
+                ZLBlockTags.register(new ResourceLocation(ModCyclic.MODID, "needs_amethyst_tool")),
+                () -> Ingredient.of(Items.AMETHYST_SHARD)
+        );
     }
 
     public static void init() {};

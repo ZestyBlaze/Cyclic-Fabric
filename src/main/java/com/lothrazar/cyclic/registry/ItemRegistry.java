@@ -7,7 +7,7 @@ import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import com.lothrazar.cyclic.item.animal.*;
 import com.lothrazar.cyclic.item.elemental.FireExtinguishItem;
 import com.lothrazar.cyclic.item.elemental.FireballItem;
-import com.lothrazar.cyclic.item.equipment.GlowingHelmetItem;
+import com.lothrazar.cyclic.item.equipment.*;
 import com.lothrazar.cyclic.item.food.*;
 import com.lothrazar.cyclic.item.redstone.LeverRemote;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -20,13 +20,13 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.SwordItem;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class ItemRegistry {
-
     public static List<ItemBaseCyclic> ITEMSFIXME = new ArrayList<>();
     public static Set<Item> ITEM_LIST = Sets.newLinkedHashSet();
     static final int SMALLPOTIONDUR = 20 * 90; // 1:30
@@ -91,9 +91,13 @@ public class ItemRegistry {
     public static final Item HEART = register("heart", new HeartItem(new FabricItemSettings().maxCount(16)));
     public static final Item HEART_EMPTY = register("heart_empty", new HeartToxicItem(new FabricItemSettings().maxCount(16)));
 
+    public static final Item SHEARS_FLINT = register("shears_flint", new ShearsMaterial(new FabricItemSettings().maxDamage(64)));
+
     public static final Item STIRRUPS = register("stirrups", new StirrupsItem(new FabricItemSettings().maxDamage(256)));
     public static final Item STIRRUPS_REVERSE = register("stirrups_reverse", new StirrupsReverseItem(new FabricItemSettings().maxDamage(256)));
     public static final Item LEVER_REMOTE = register("lever_remote", new LeverRemote(new FabricItemSettings().maxCount(1)));
+
+    public static final Item SHEARS_OBSIDIAN = register("shears_obsidian", new ShearsMaterial(new FabricItemSettings().maxDamage(1024 * 1024)));
 
     public static final Item DIAMOND_CARROT_HEALTH = register("diamond_carrot_health", new ItemHorseHealthDiamondCarrot(new FabricItemSettings()));
     public static final Item REDSTONE_CARROT_SPEED = register("redstone_carrot_speed", new ItemHorseRedstoneSpeed(new FabricItemSettings()));
@@ -105,6 +109,15 @@ public class ItemRegistry {
     public static final Item EMERALD_HELMET = register("emerald_helmet", new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item EMERALD_CHESTPLATE = register("emerald_chestplate", new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
     public static final Item EMERALD_LEGGINGS = register("emerald_leggings", new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item AMETHYST_PICKAXE = register("amethyst_pickaxe", new AmethystPickaxeItem(MaterialRegistry.ToolMats.AMETHYST, 1, -2.8F, new FabricItemSettings()));
+
+    public static final Item AMETHYST_AXE = register("amethyst_axe", new AmethystAxeItem(MaterialRegistry.ToolMats.AMETHYST, 6.0F, -3.1F, new FabricItemSettings()));
+
+    public static final Item AMETHYST_HOE = register("amethyst_hoe", new AmethystHoeItem(MaterialRegistry.ToolMats.AMETHYST, -4, 0F, new Item.Properties()));
+
+    public static final Item AMETHYST_SHOVEL = register("amethyst_shovel", new AmethystShovelItem(MaterialRegistry.ToolMats.AMETHYST, 1.5F, -3.0F, new Item.Properties()));
+
+    public static final Item AMETHYST_SWORD = register("amethyst_sword", new SwordItem(MaterialRegistry.ToolMats.AMETHYST, 3, -2.4F, (new Item.Properties())));
 
     public static final Item FIRE_KILLER = register("fire_killer", new FireExtinguishItem(new FabricItemSettings()));
     public static final Item MILK_BOTTLE = register("milk_bottle", new MilkBottle(new FabricItemSettings().food(new FoodProperties.Builder().alwaysEat().build())));

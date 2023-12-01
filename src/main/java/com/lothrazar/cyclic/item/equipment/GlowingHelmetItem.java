@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 
-public class GlowingHelmetItem extends ArmorItem implements IHasClickToggle, ArmorTickingItem {
+public class GlowingHelmetItem extends ArmorItem implements IHasClickToggle {
     public static final String NBT_STATUS = "onoff";
 
     public GlowingHelmetItem(ArmorMaterial materialIn, ArmorItem.Type slot, Properties builderIn) {
@@ -95,12 +95,10 @@ public class GlowingHelmetItem extends ArmorItem implements IHasClickToggle, Arm
         return false;
     }
 
-    /*
-    //from ItemEvents- curios slot
     public static void onEntityUpdate(Player player) {
-        //reduce check to only once per second instead  of per tick
-        if (player.level().getGameTime() % 20 == 0) { //some of the items need an off switch
+        if (player.level().getGameTime() % 20 == 0) {
             checkIfHelmOff(player);
+            /*
             // get helm
             ItemStack helm = CharmUtil.getCurio(player, ItemRegistry.GLOWING_HELMET.get());
             if (!helm.isEmpty()) {
@@ -111,7 +109,7 @@ public class GlowingHelmetItem extends ArmorItem implements IHasClickToggle, Arm
                     removeNightVision(player, false);
                 }
             }
+             */
         }
     }
-     */
 }

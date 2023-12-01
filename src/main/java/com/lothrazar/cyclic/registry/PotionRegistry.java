@@ -15,21 +15,21 @@ import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 
 public class PotionRegistry {
     static final int normal = 3600;
-    static final int smal = 1800;
+    static final int small = 1800;
 
     public static final Potion BLIND = register("blind", new Potion(ModCyclic.MODID + "_blind", new MobEffectInstance(MobEffects.BLINDNESS, normal)));
     public static final Potion BUTTERFINGERS = register("butter", new Potion(ModCyclic.MODID + "_butter", new MobEffectInstance(PotionEffectRegistry.BUTTERFINGERS, normal)));
     public static final Potion FLIGHT = register("flight", new Potion(ModCyclic.MODID + "_flight", new MobEffectInstance(PotionEffectRegistry.FLIGHT, normal)));
     public static final Potion HASTE = register("haste", new Potion(ModCyclic.MODID + "_haste", new MobEffectInstance(MobEffects.DIG_SPEED, normal)));
-    public static final Potion HASTE_STRONG = register("strong_haste", new Potion(ModCyclic.MODID + "_strong_haste", new MobEffectInstance(MobEffects.DIG_SPEED, smal, 1)));
+    public static final Potion HASTE_STRONG = register("strong_haste", new Potion(ModCyclic.MODID + "_strong_haste", new MobEffectInstance(MobEffects.DIG_SPEED, small, 1)));
     public static final Potion HUNGER = register("hunger", new Potion(ModCyclic.MODID + "_hunger", new MobEffectInstance(MobEffects.HUNGER, normal)));
-    public static final Potion HUNGER_STRONG = register("hunger_strong", new Potion(ModCyclic.MODID + "_hunger_strong", new MobEffectInstance(MobEffects.HUNGER, smal, 1)));
-    public static final Potion LEVITATION = register("levitation", new Potion(ModCyclic.MODID + "_levitation", new MobEffectInstance(MobEffects.LEVITATION, smal)));
+    public static final Potion HUNGER_STRONG = register("strong_hunger", new Potion(ModCyclic.MODID + "_strong_hunger", new MobEffectInstance(MobEffects.HUNGER, small, 1)));
+    public static final Potion LEVITATION = register("levitation", new Potion(ModCyclic.MODID + "_levitation", new MobEffectInstance(MobEffects.LEVITATION, small)));
     public static final Potion MAGNETIC = register("magnetic", new Potion(ModCyclic.MODID + "_magnetic", new MobEffectInstance(PotionEffectRegistry.MAGNETIC, normal)));
-    public static final Potion RESISTANCE = register("resistance", new Potion(ModCyclic.MODID + "_resistance", new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, smal)));
-    public static final Potion STUN = register("stun", new Potion(ModCyclic.MODID + "_stun", new MobEffectInstance(PotionEffectRegistry.STUN, smal)));
-    public static final Potion WATERWALK = register("waterwalk", new Potion(ModCyclic.MODID + "_waterwalk", new MobEffectInstance(PotionEffectRegistry.WATERWALK, smal)));
-    public static final Potion WITHER = register("wither", new Potion(ModCyclic.MODID + "_wither", new MobEffectInstance(MobEffects.WITHER, smal)));
+    public static final Potion RESISTANCE = register("resistance", new Potion(ModCyclic.MODID + "_resistance", new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, small)));
+    public static final Potion STUN = register("stun", new Potion(ModCyclic.MODID + "_stun", new MobEffectInstance(PotionEffectRegistry.STUN, small)));
+    public static final Potion WATERWALK = register("waterwalk", new Potion(ModCyclic.MODID + "_waterwalk", new MobEffectInstance(PotionEffectRegistry.WATERWALK, small)));
+    public static final Potion WITHER = register("wither", new Potion(ModCyclic.MODID + "_wither", new MobEffectInstance(MobEffects.WITHER, small)));
 
     public static Potion register(String name, Potion potion) {
         return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(ModCyclic.MODID, name), potion);
