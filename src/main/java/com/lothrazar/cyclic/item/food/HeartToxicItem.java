@@ -32,7 +32,7 @@ public class HeartToxicItem extends ItemBaseCyclic {
         //    if (healthAttribute != null && healthAttribute.getBaseValue() > 2) {
         //get attribute modif by id
         AttributeModifier oldHealthModifier = healthAttribute.getModifier(AttributesUtil.DEFAULT_ID);
-        double addedHealth = 0;
+        double addedHealth;
         if (oldHealthModifier != null && oldHealthModifier.getAmount() <= -18) {
             addedHealth = -18;
         }

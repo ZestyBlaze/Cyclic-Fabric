@@ -42,14 +42,14 @@ public class LeverRemote extends ItemBaseCyclic {
     @Override
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand hand) {
         ItemStack stack = playerIn.getItemInHand(hand);
-        boolean success = false;
+        boolean success;
         success = trigger(stack, worldIn, playerIn);
         if (success) {
             playerIn.swing(hand);
-            return new InteractionResultHolder<ItemStack>(InteractionResult.SUCCESS, stack);
+            return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
         }
         else {
-            return new InteractionResultHolder<ItemStack>(InteractionResult.FAIL, stack);
+            return new InteractionResultHolder<>(InteractionResult.FAIL, stack);
         }
     }
 
@@ -66,15 +66,13 @@ public class LeverRemote extends ItemBaseCyclic {
             TagDataUtil.setItemStackBlockPos(stack, pos);
             //and save dimension
             stack.getOrCreateTag().putString("LeverDim", LevelWorldUtil.dimensionToString(player.level()));
-            //      UtilNBT.setItemStackNBTVal(stack, "LeverDim", player.dimension.getId());
             if (world.isClientSide) {
                 ChatUtil.sendStatusMessage(player, this.getDescriptionId() + ".saved");
             }
-            //      UtilSound.playSound(player, SoundEvents.BLOCK_LEVER_CLICK);
             return InteractionResult.SUCCESS;
         }
         else {
-            boolean success = false;
+            boolean success;
             success = trigger(stack, world, player);
             if (success) {
                 return InteractionResult.SUCCESS;
@@ -83,7 +81,6 @@ public class LeverRemote extends ItemBaseCyclic {
                 return InteractionResult.FAIL;
             }
         }
-        //    return super.onItemUse(context);
     }
 
     private boolean trigger(ItemStack stack, Level world, Player player) {

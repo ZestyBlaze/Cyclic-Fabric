@@ -66,23 +66,24 @@ public class BeekeeperEnchant extends EnchantmentFlib {
 
     public void onLivingDamageEvent() {
         LivingDamageEvent.HURT.register(event -> {
-            if(!isEnabled()) {
+            if (!isEnabled()) {
                 return;
             }
-            int level = this.getCurrentArmorLevel(event.damaged);
-            if (level >= 1 && event.damageSource != null && event.damageSource.getDirectEntity() != null) {
+            int level = this.getCurrentArmorLevel(event.getEntity());
+            if (level >= 1 && event.getSource() != null
+                    && event.getSource().getDirectEntity() != null) {
                 // Beekeeper I+
-                Entity esrc = event.damageSource.getDirectEntity();
+                Entity esrc = event.getSource().getDirectEntity();
                 if (esrc.getType() == EntityType.BEE ||
                         esrc.getType() == EntityType.BAT ||
                         esrc.getType() == EntityType.LLAMA_SPIT) {
-                    event.damageAmount = 0;
+                    event.setAmount(0);
                 }
                 if (level >= 2) {
                     //Beekeeper II+
                     //all of level I and also
                     if (esrc.getType() == EntityType.PHANTOM) {
-                        event.damageAmount = 0;
+                        event.setAmount(0);
                     }
                 }
             }

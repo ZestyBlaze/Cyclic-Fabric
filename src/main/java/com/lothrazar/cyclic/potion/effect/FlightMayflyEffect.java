@@ -10,10 +10,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-public class PotionMayflyEffect extends CyclicMobEffect {
+public class FlightMayflyEffect extends CyclicMobEffect {
     private static final AbilitySource FLIGHT_POTION = Pal.getAbilitySource(new ResourceLocation(ModCyclic.MODID, "potion_flight"));
 
-    public PotionMayflyEffect(MobEffectCategory category, int color) {
+    public FlightMayflyEffect(MobEffectCategory category, int color) {
         super(category, color);
     }
 

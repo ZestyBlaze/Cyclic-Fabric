@@ -49,24 +49,10 @@ public class LastStandEnchant extends EnchantmentFlib {
         return isEnabled() && super.isDiscoverable();
     }
 
-    /*
-    @Override
-    public boolean isAllowedOnBooks() {
-        return isEnabled() && super.isAllowedOnBooks();
-    }
-     */
-
     @Override
     public boolean canEnchant(ItemStack stack) {
         return isEnabled() && super.canEnchant(stack);
     }
-
-    /*
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack) {
-        return isEnabled() && super.canApplyAtEnchantingTable(stack);
-    }
-     */
 
     @Override
     public boolean isEnabled() {

@@ -23,7 +23,6 @@ import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import java.util.*;
 
 public class EnderApple extends ItemBaseCyclic {
-
     public static ConfigValue<List<? extends String>> STRUCTURE_TAGS;
     public static IntValue PRINTED;
     private static final int COOLDOWN = 60;
@@ -38,7 +37,6 @@ public class EnderApple extends ItemBaseCyclic {
     }
 
     //does pos exist in biome
-    //    RegistryAccess.BUILTIN.get().registryOrThrow(Registry.BIOME_REGISTRY).getOrCreateTag(yourBiomeTagKey).contains(level.getBiome(pos))
     public Pair<BlockPos, Holder<Structure>> findNearestPair(ServerLevel sl, TagKey<Structure> p_215012_, BlockPos p_215013_, int p_215014_, boolean p_215015_) {
         //getLevelSettings() -> worldGenOptions
         if (!sl.getServer().getWorldData().worldGenOptions().generateStructures()) {
@@ -59,10 +57,9 @@ public class EnderApple extends ItemBaseCyclic {
     @SuppressWarnings("unchecked")
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving) {
-        if (entityLiving instanceof Player == false) {
+        if (!(entityLiving instanceof Player player)) {
             return super.finishUsingItem(stack, worldIn, entityLiving);
         }
-        Player player = (Player) entityLiving;
         if (player.getCooldowns().isOnCooldown(this)) {
             return super.finishUsingItem(stack, worldIn, entityLiving);
         }

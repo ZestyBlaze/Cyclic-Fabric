@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 public class TagDataUtil {
+
     public static final String SKULLOWNER = "SkullOwner";
 
     public static ItemStack buildNamedPlayerSkull(Player player) {
@@ -29,9 +30,15 @@ public class TagDataUtil {
         if (pos == null || item.isEmpty()) {
             return;
         }
-        setItemStackNBTVal(item, "xpos", pos.getX());
-        setItemStackNBTVal(item, "ypos", pos.getY());
-        setItemStackNBTVal(item, "zpos", pos.getZ());
+        TagDataUtil.setItemStackNBTVal(item, "xpos", pos.getX());
+        TagDataUtil.setItemStackNBTVal(item, "ypos", pos.getY());
+        TagDataUtil.setItemStackNBTVal(item, "zpos", pos.getZ());
+    }
+
+    public static void putBlockPos(CompoundTag tag, BlockPos pos) {
+        tag.putInt("xpos", pos.getX());
+        tag.putInt("ypos", pos.getY());
+        tag.putInt("zpos", pos.getZ());
     }
 
     public static BlockPos getItemStackBlockPos(ItemStack item) {

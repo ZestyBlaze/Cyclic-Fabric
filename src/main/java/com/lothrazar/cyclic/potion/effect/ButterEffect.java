@@ -3,11 +3,11 @@ package com.lothrazar.cyclic.potion.effect;
 import com.lothrazar.cyclic.flib.Const;
 import com.lothrazar.cyclic.flib.ItemStackUtil;
 import com.lothrazar.cyclic.potion.CyclicMobEffect;
+import dev.zestyblaze.zestylib.events.living.LivingEvent;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,8 +20,10 @@ public class ButterEffect extends CyclicMobEffect {
     }
 
     @Override
-    public void tick(LivingEntity living) {
-        Level level = living.level();
+    public void tick(LivingEvent.LivingTickEvent event) {
+        // delete me i guess
+        LivingEntity living = event.getEntity();
+        var level = living.level();
         if (level.random.nextDouble() > DROP_CHANCE) {
             return;
         }

@@ -35,7 +35,6 @@ public class AppleBuffs extends ItemBaseCyclic {
                 tooltip.add(t);
             }
         }
-        //    super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
     @Override

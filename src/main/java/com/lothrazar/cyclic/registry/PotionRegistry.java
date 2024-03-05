@@ -11,25 +11,30 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 
 public class PotionRegistry {
     static final int normal = 3600;
-    static final int small = 1800;
+    static final int smal = 1800;
 
+    public static final Potion ATTACK_RANGE = register("attack_range", new Potion(ModCyclic.MODID + "_attack_range", new MobEffectInstance(PotionEffectRegistry.ATTACK_RANGE, normal)));
     public static final Potion BLIND = register("blind", new Potion(ModCyclic.MODID + "_blind", new MobEffectInstance(MobEffects.BLINDNESS, normal)));
     public static final Potion BUTTERFINGERS = register("butter", new Potion(ModCyclic.MODID + "_butter", new MobEffectInstance(PotionEffectRegistry.BUTTERFINGERS, normal)));
     public static final Potion FLIGHT = register("flight", new Potion(ModCyclic.MODID + "_flight", new MobEffectInstance(PotionEffectRegistry.FLIGHT, normal)));
+    public static final Potion FROST_WALKER = register("frost_walker", new Potion(ModCyclic.MODID + "_frost_walker", new MobEffectInstance(PotionEffectRegistry.FROST_WALKER, normal)));
     public static final Potion HASTE = register("haste", new Potion(ModCyclic.MODID + "_haste", new MobEffectInstance(MobEffects.DIG_SPEED, normal)));
-    public static final Potion HASTE_STRONG = register("strong_haste", new Potion(ModCyclic.MODID + "_strong_haste", new MobEffectInstance(MobEffects.DIG_SPEED, small, 1)));
+    public static final Potion HASTE_STRONG = register("strong_haste", new Potion(ModCyclic.MODID + "_strong_haste", new MobEffectInstance(MobEffects.DIG_SPEED, smal, 1)));
     public static final Potion HUNGER = register("hunger", new Potion(ModCyclic.MODID + "_hunger", new MobEffectInstance(MobEffects.HUNGER, normal)));
-    public static final Potion HUNGER_STRONG = register("strong_hunger", new Potion(ModCyclic.MODID + "_strong_hunger", new MobEffectInstance(MobEffects.HUNGER, small, 1)));
-    public static final Potion LEVITATION = register("levitation", new Potion(ModCyclic.MODID + "_levitation", new MobEffectInstance(MobEffects.LEVITATION, small)));
+    public static final Potion LEVITATION = register("levitation", new Potion(ModCyclic.MODID + "_levitation", new MobEffectInstance(MobEffects.LEVITATION, smal)));
     public static final Potion MAGNETIC = register("magnetic", new Potion(ModCyclic.MODID + "_magnetic", new MobEffectInstance(PotionEffectRegistry.MAGNETIC, normal)));
-    public static final Potion RESISTANCE = register("resistance", new Potion(ModCyclic.MODID + "_resistance", new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, small)));
-    public static final Potion STUN = register("stun", new Potion(ModCyclic.MODID + "_stun", new MobEffectInstance(PotionEffectRegistry.STUN, small)));
-    public static final Potion WATERWALK = register("waterwalk", new Potion(ModCyclic.MODID + "_waterwalk", new MobEffectInstance(PotionEffectRegistry.WATERWALK, small)));
-    public static final Potion WITHER = register("wither", new Potion(ModCyclic.MODID + "_wither", new MobEffectInstance(MobEffects.WITHER, small)));
+    public static final Potion REACH_DISTANCE = register("reach_distance", new Potion(ModCyclic.MODID + "_reach_distance", new MobEffectInstance(PotionEffectRegistry.REACH_DISTANCE, normal)));
+    public static final Potion RESISTANCE = register("resistance", new Potion(ModCyclic.MODID + "_resistance", new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, smal)));
+    public static final Potion STUN = register("stun", new Potion(ModCyclic.MODID + "_stun", new MobEffectInstance(PotionEffectRegistry.STUN, smal)));
+    public static final Potion STRONG_HUNGER = register("strong_hunger", new Potion(ModCyclic.MODID + "_strong_hunger", new MobEffectInstance(MobEffects.HUNGER, smal, 1)));
+    public static final Potion SNOWWALK = register("snowwalk", new Potion(ModCyclic.MODID + "_snow", new MobEffectInstance(PotionEffectRegistry.SNOWWALK, smal)));
+    public static final Potion WATERWALK = register("waterwalk", new Potion(ModCyclic.MODID + "_waterwalk", new MobEffectInstance(PotionEffectRegistry.WATERWALK, smal)));
+    public static final Potion WITHER = register("wither", new Potion(ModCyclic.MODID + "_wither", new MobEffectInstance(MobEffects.WITHER, smal)));
 
     public static Potion register(String name, Potion potion) {
         return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(ModCyclic.MODID, name), potion);
@@ -78,17 +83,29 @@ public class PotionRegistry {
         }
         if (PotionRecipeConfig.HUNGER.get()) {
             basicBrewing(Potions.THICK, Items.ROTTEN_FLESH, PotionRegistry.HUNGER);
-            basicBrewing(PotionRegistry.HUNGER, Items.REDSTONE, PotionRegistry.HUNGER_STRONG);
+            basicBrewing(PotionRegistry.HUNGER, Items.REDSTONE, PotionRegistry.STRONG_HUNGER);
         }
         if (PotionRecipeConfig.WATERWALK.get()) {
             basicBrewing(Potions.AWKWARD, Items.PRISMARINE_SHARD, PotionRegistry.WATERWALK);
             basicBrewing(Potions.THICK, Items.COD, PotionRegistry.WATERWALK);
         }
+        if (PotionRecipeConfig.SNOWWALK.get()) {
+            basicBrewing(Potions.AWKWARD, Items.SNOWBALL, PotionRegistry.SNOWWALK);
+        }
         if (PotionRecipeConfig.BUTTERFINGERS.get()) {
             basicBrewing(Potions.AWKWARD, Items.GOLD_INGOT, PotionRegistry.BUTTERFINGERS);
         }
+        if (PotionRecipeConfig.FROST_WALKER.get()) {
+            basicBrewing(Potions.AWKWARD, Blocks.ICE.asItem(), PotionRegistry.FROST_WALKER);
+        }
         if (PotionRecipeConfig.MAGNETIC.get()) {
             basicBrewing(Potions.AWKWARD, Items.LAPIS_LAZULI, PotionRegistry.MAGNETIC);
+        }
+        if (PotionRecipeConfig.REACH_DISTANCE.get()) {
+            basicBrewing(Potions.AWKWARD, Items.AMETHYST_SHARD, PotionRegistry.REACH_DISTANCE);
+        }
+        if (PotionRecipeConfig.ATTACK_RANGE.get()) {
+            basicBrewing(Potions.AWKWARD, Blocks.POINTED_DRIPSTONE.asItem(), PotionRegistry.ATTACK_RANGE);
         }
         if (PotionRecipeConfig.FLIGHT.get()) {
             basicBrewing(Potions.STRONG_HEALING, Items.CHORUS_FRUIT, PotionRegistry.FLIGHT);

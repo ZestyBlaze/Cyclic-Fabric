@@ -12,7 +12,9 @@ import net.minecraft.world.item.enchantment.EnchantmentCategory;
 public class EnchantRegistry {
     private static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[] { EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET };
 
+    public static final Enchantment EXCAVATE = register(ExcavationEnchant.ID, new ExcavationEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
     public static final Enchantment BEHEADING = register(BeheadingEnchant.ID, new BeheadingEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
+    public static final Enchantment GROWTH = register(GrowthEnchant.ID, new GrowthEnchant(Enchantment.Rarity.COMMON, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
     public static final Enchantment AUTOSMELT = register(AutoSmeltEnchant.ID, new AutoSmeltEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
     public static final Enchantment DISARM = register(DisarmEnchant.ID, new DisarmEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
     public static final Enchantment CURSE = register(GloomCurseEnchant.ID, new GloomCurseEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.ARMOR, EquipmentSlot.CHEST));

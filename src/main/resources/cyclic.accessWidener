@@ -3,3 +3,4 @@ accessible field net/minecraft/world/entity/LivingEntity effectsDirty Z
 accessible method net/minecraft/world/entity/animal/horse/AbstractHorse eating ()V
 accessible field net/minecraft/world/entity/animal/horse/Horse DATA_ID_TYPE_VARIANT Lnet/minecraft/network/syncher/EntityDataAccessor;
 accessible field net/minecraft/world/entity/animal/horse/AbstractHorse inventory Lnet/minecraft/world/SimpleContainer;
+accessible method net/minecraft/world/level/block/CropBlock getAgeProperty ()Lnet/minecraft/world/level/block/state/properties/IntegerProperty;

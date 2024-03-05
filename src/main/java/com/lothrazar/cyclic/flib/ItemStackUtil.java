@@ -36,4 +36,15 @@ public class ItemStackUtil {
             world.addFreshEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
         }
     }
+
+    /**
+     * Preserve damage but delete the rest of the tag
+     *
+     * @param itemstack
+     */
+    public static void deleteTag(ItemStack itemstack) {
+        int dmg = itemstack.getDamageValue();
+        itemstack.setTag(null);
+        itemstack.setDamageValue(dmg);
+    }
 }

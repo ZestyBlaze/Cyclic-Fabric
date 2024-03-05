@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.item.GemstoneItem;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
+import com.lothrazar.cyclic.item.OreProspector;
 import com.lothrazar.cyclic.item.animal.*;
 import com.lothrazar.cyclic.item.elemental.FireExtinguishItem;
 import com.lothrazar.cyclic.item.elemental.FireballItem;
@@ -85,6 +86,8 @@ public class ItemRegistry {
             .alwaysEat().build())));
     public static final Item GLOWING_HELMET = register("glowing_helmet", new GlowingHelmetItem(MaterialRegistry.ArmorMats.GLOWING, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item CHORUS_FLIGHT = register("chorus_flight", new EdibleFlightItem(new FabricItemSettings()));
+
+    public static final Item PROSPECTOR = register("prospector", new OreProspector(new FabricItemSettings().maxDamage(256)));
 
     public static final Item GEM_AMBER = register("gem_amber", new GemstoneItem(new FabricItemSettings()));
 

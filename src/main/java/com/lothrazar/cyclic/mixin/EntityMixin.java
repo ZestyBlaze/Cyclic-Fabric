@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Entity.class)
 public class EntityMixin {
     @Inject(method = "maxUpStep", at = @At("TAIL"), cancellable = true)
-    public void cyclic$maxUpStep(CallbackInfoReturnable<Float> cir) {
-        if((Object)this instanceof LivingEntity) {
+    private void cyclic$maxStepUp(CallbackInfoReturnable<Float> cir) {
+        if ((Object)this instanceof LivingEntity) {
             float baseStepHeight = cir.getReturnValue();
             cir.setReturnValue(AttributeRegistry.getStepHeight(baseStepHeight, (LivingEntity)(Object)this));
         }

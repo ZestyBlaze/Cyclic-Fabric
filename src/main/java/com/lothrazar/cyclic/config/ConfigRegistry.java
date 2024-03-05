@@ -5,6 +5,7 @@ import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.LavaSpongeBlock;
 import com.lothrazar.cyclic.enchant.*;
 import com.lothrazar.cyclic.flib.ConfigTemplate;
+import com.lothrazar.cyclic.item.OreProspector;
 import com.lothrazar.cyclic.item.food.EdibleFlightItem;
 import com.lothrazar.cyclic.item.food.EnderApple;
 import com.lothrazar.cyclic.item.food.HeartItem;
@@ -193,8 +194,8 @@ public class ConfigRegistry extends ConfigTemplate {
                 .defineList(DisarmEnchant.ID + ".ingoredMobs", DISARM_IGNORE,
                         it -> it instanceof String);
         ExcavationEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(ExcavationEnchant.ID + ".enabled", true);
-        //GrowthEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(GrowthEnchant.ID + ".enabled", true);
-        //GrowthEnchant.RADIUSFACTOR = CFG.comment("Radius per level.  size around player to perform growth logic").defineInRange(GrowthEnchant.ID + ".radius", 2, 1, 16);
+        GrowthEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(GrowthEnchant.ID + ".enabled", true);
+        GrowthEnchant.RADIUSFACTOR = CFG.comment("Radius per level.  size around player to perform growth logic").defineInRange(GrowthEnchant.ID + ".radius", 2, 1, 16);
         //MultiJumpEnchant.CFG = CFG.comment("(Multijump) Set false to disable Multi Jump enchantment").define(MultiJumpEnchant.ID + ".enabled", true);
         //LifeLeechEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(LifeLeechEnchant.ID + ".enabled", true);
         //MagnetEnchant.CFG = CFG.comment("Set false to stop enchantment from working").define(MagnetEnchant.ID + ".enabled", true);
@@ -268,8 +269,8 @@ public class ConfigRegistry extends ConfigTemplate {
         //WandHypnoItem.RANGE = CFG.comment("Range to search out enemies for this multi-target attack").defineInRange("wand_hypno.range", 16, 1, 256);
         //WandMissileItem.COST = CFG.comment("Energy cost per item use").defineInRange("wand_missile.energy", 150, 1, 50000);
         //WandMissileItem.RANGE = CFG.comment("Range to search out enemies for this attack").defineInRange("wand_missile.range", 64, 1, 512);
-        //OreProspector.RANGE = CFG.comment("Ore Prospector radius around player to search for ores").defineInRange("prospector.range", 32, 1, 256);
-        //OreProspector.HEIGHT = CFG.comment("Ore Prospector height around player to search for ores").defineInRange("prospector.height", 8, 1, 128);
+        OreProspector.RANGE = CFG.comment("Ore Prospector radius around player to search for ores").defineInRange("prospector.range", 32, 1, 256);
+        OreProspector.HEIGHT = CFG.comment("Ore Prospector height around player to search for ores").defineInRange("prospector.height", 8, 1, 128);
         ///
         CFG.comment(WALL, " Emerald gear settings", WALL).push("emerald");
         MaterialRegistry.EMERALD_TOUGH = CFG.comment("Armor toughness").defineInRange("toughness", 3.0F, 0.1F, 99F);
